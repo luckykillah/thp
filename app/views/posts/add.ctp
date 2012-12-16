@@ -6,7 +6,7 @@
 		echo $this->Form->input('title');
 		echo $this->Form->input('body');
 		echo $this->Form->input('type');
-		echo $this->Form->input('Category');
+		echo $this->Form->input('Category', array('type' => 'checkbox'));
 		echo $this->Form->input('Tag');
 	?>
 	</fieldset>

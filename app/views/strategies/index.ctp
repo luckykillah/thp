@@ -2,35 +2,15 @@
 	<h2><?php __('Strategies');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('title');?></th>
-			<th><?php echo $this->Paginator->sort('body');?></th>
-			<th><?php echo $this->Paginator->sort('goal_id');?></th>
-			<th><?php echo $this->Paginator->sort('created');?></th>
-			<th><?php echo $this->Paginator->sort('modified');?></th>
 			<th class="actions"><?php __('Actions');?></th>
 	</tr>
-	<?php
-	$i = 0;
-	foreach ($strategies as $strategy):
-		$class = null;
-		if ($i++ % 2 == 0) {
-			$class = ' class="altrow"';
-		}
-	?>
-	<tr<?php echo $class;?>>
-		<td><?php echo $strategy['Strategy']['id']; ?>&nbsp;</td>
-		<td><?php echo $strategy['Strategy']['title']; ?>&nbsp;</td>
-		<td><?php echo $strategy['Strategy']['body']; ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($strategy['Goal']['title'], array('controller' => 'goals', 'action' => 'view', $strategy['Goal']['id'])); ?>
-		</td>
-		<td><?php echo $strategy['Strategy']['created']; ?>&nbsp;</td>
-		<td><?php echo $strategy['Strategy']['modified']; ?>&nbsp;</td>
+	<? foreach ($strategies as $strategy): ?>
+	<tr>
+		<td><?= $this->Html->link(__($strategy['Goal']['title'], true), array('action' => 'view', $strategy['Strategy']['id'])); ?> (<em>for <?= $this->Html->link($strategy['Goal']['title'], array('controller' => 'goals', 'action' => 'view', $strategy['Goal']['id'])); ?></em>)</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $strategy['Strategy']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $strategy['Strategy']['id'])); ?>
-			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $strategy['Strategy']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $strategy['Strategy']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $strategy['Strategy']['id']), array('data-icon' => '&#xe001', 'escape' => false)); ?>
+			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $strategy['Strategy']['id']), array('data-icon' => '&#xe00b', 'escape' => false), null, sprintf(__('Are you sure you want to delete # %s?', true), $strategy['Strategy']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -43,19 +23,9 @@
 	?>	</p>
 
 	<div class="paging">
-		<?php echo $this->Paginator->prev('<< ' . __('previous', true), array(), null, array('class'=>'disabled'));?>
+		<?php echo $this->Paginator->prev('prev', array(), null, array('class'=>'disabled'));?>
 	 | 	<?php echo $this->Paginator->numbers();?>
  |
-		<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
+		<?php echo $this->Paginator->next('next', array(), null, array('class' => 'disabled'));?>
 	</div>
-</div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Strategy', true), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Goals', true), array('controller' => 'goals', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Goal', true), array('controller' => 'goals', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Updates', true), array('controller' => 'updates', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Update', true), array('controller' => 'updates', 'action' => 'add')); ?> </li>
-	</ul>
 </div>

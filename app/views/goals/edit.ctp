@@ -6,7 +6,7 @@
 		echo $this->Form->input('id');
 		echo $this->Form->input('title');
 		echo $this->Form->input('body');
-		echo $this->Form->input('status');
+		echo $this->Form->input('status', array('type' => 'checkbox', 'label' => 'Is this goal active?'));
 		echo $this->Form->input('Category');
 	?>
 	</fieldset>
