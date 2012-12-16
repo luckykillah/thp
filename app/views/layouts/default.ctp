@@ -25,11 +25,15 @@
 		<?php __('THP:'); ?>
 		<?php echo $title_for_layout; ?>
 	</title>
+
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" media="all"/>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+	<script type="text/javascript" src="/js/script.js"></script>
+	
 	<?php
 		echo $this->Html->meta('icon');
-
 		echo $this->Html->css('style');
-
 		echo $scripts_for_layout;
 	?>
 </head>
